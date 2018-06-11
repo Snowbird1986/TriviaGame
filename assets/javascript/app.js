@@ -133,7 +133,7 @@ $(document).ready(function(){
         $(".timer").html(timeConverter(time));
         $(".question").html(questions[i].correctImage);
         $(".answer").html("Correct:"+questions[i].correctAnswer);
-        setTimeout(correct,6000);
+        setTimeout(nextQuestion,6000);
         questionInterval = setInterval(decrement,1000)
     }
     function betweenIncorrect() {
@@ -142,7 +142,7 @@ $(document).ready(function(){
         $(".timer").html(timeConverter(time));
         $(".question").html(questions[i].incorrectImage);
         $(".answer").html("The Correct Answer was:"+questions[i].correctAnswer);
-        setTimeout(incorrect,6000);
+        setTimeout(nextQuestion,6000);
         questionInterval = setInterval(decrement,1000)
     }
     function nextQuestion() {
