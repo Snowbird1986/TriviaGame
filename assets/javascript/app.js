@@ -92,7 +92,8 @@ $(document).ready(function(){
         // for(i=0; i<questions.length; i++){
             $(".question").html(questions[i].question);
             for(j=0; j<questions[i].answers.length; j++){
-                $(".answer").append("<div class='answers'>questions[i].answers[j]</div>")
+                // $(".answer").append("<div class='answers'>questions[i].answers[j]</div>")
+                $("<div/>").html(questions[i].answers[j]).attr('class','answers').append(".answer")
             };
             setTimeout(noAnswer,31000);
             questionInterval = setInterval(decrement,1000);
@@ -153,7 +154,8 @@ $(document).ready(function(){
             i++;
             $(".question").html(questions[i].question);
             for(j=0; j<questions[i].answers.length; j++){
-                $(".answers").html("<div>'questions[i].answers'</div>")
+                // $(".answers").html("<div>'questions[i].answers'</div>")
+                $("<div/>").html(questions[i].answers[j]).attr('class','answers').append(".answer")
             };
             setTimeout(noAnswer,31000);
             questionInterval = setInterval(decrement,1000);
