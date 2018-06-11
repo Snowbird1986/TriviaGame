@@ -92,7 +92,7 @@ $(document).ready(function(){
         // for(i=0; i<questions.length; i++){
             $(".question").html(questions[i].question);
             for(j=0; j<questions[i].answers.length; j++){
-                $(".answer").html("<div class='answers'>'questions[i].answers[j]'</div>")
+                $(".answer").append("<div class='answers'>questions[i].answers[j]</div>")
             };
             setTimeout(noAnswer,31000);
             questionInterval = setInterval(decrement,1000);
