@@ -1,69 +1,82 @@
 var questions = [{
     question: "What was the teachers name?",
     answers: {
-        a: "",
+        a: "a",
         b: "Mr. Pheeny",
-        c: "",
-        d: "",
+        c: "a",
+        d: "a",
     },
     correctAnswer: "Mr. Pheeny",
+    correctImage: "./images/questionOneCorrect.gif",
+    incorrectImage: "./images/questionOneIncorrect.gif",
     time:30
     },
     {
     question: "What grade was Corey in in season 1?",
     answers: {
-        a: "",
-        b: "",
-        c: "",
+        a: "a",
+        b: "a",
+        c: "a",
         d: "6th Grade",
     },
     correctAnswer: "6th Grade",
+    correctImage: "./images/questionTwoCorrect.jpg",
+    incorrectImage: "./images/QuestiontwoIncorrect.jpg",
     time:30
     },
     {
     question: "What city did the Matthews family live in?",
     answers: {
-        a: "",
-        b: "",
+        a: "a",
+        b: "a",
         c: "Philadelphia",
-        d: "",
+        d: "a",
     },
     correctAnswer: "Philadelphia",
+    correctImage: "./images/questionThreeCorrect.gif",
+    incorrectImage: "./images/questionThreeIncorrect.gif",
     time:30
     },
     {
     question: "What was Corey's dads job?",
     answers: {
         a: "General store manager",
-        b: "",
-        c: "",
-        d: "",
+        b: "a",
+        c: "a",
+        d: "a",
     },
     correctAnswer: "General store manager",
+    correctImage: "./images/questionFourCorrect.gif",
+    incorrectImage: "./images/questionFourIncorrect.gif",
     time:30 
     },
     {
     question: "Who is Corey's best friend?",
     answers: {
-        a: "",
-        b: "",
+        a: "a",
+        b: "a",
         c: "Shawn",
-        d: "",
+        d: "a",
     },
     correctAnswer: "Shawn",
+    correctImage: "./images/questionFiveCorrect.gif",
+    incorrectImage: "./images/questionFiveIncorrect.gif",
     time:30 
     },
     {
     question: "What is Corey's favorite sport",
     answers: {
-        a: "",
+        a: "a",
         b: "Baseball",
-        c: "",
-        d: "",
+        c: "a",
+        d: "a",
     },
     correctAnswer: "Baseball",
+    correctImage: "./images/questionSixCorrect.gif",
+    incorrectImage: "./images/questionSixIncorrect.png",
     time:30  
     }]
+    
 
 $(document).ready(function(){
     time = 30
@@ -100,12 +113,12 @@ $(document).ready(function(){
     
     function correct (){
         correct++;
-        nextQuestion();
+        betweenCorrect();
         console.log(correct)
     }
     function incorrect (){
         incorrect++;
-        nextQuestion();
+        betweenIncorrect();
         console.log(incorrect)
     }
     function noAnswer (){
@@ -114,6 +127,24 @@ $(document).ready(function(){
         console.log(unanswered)
     }
 
+    function betweenCorrect() {
+        clearInterval(questionInterval);
+        time=5;
+        $(".timer").html(timeConverter(time));
+        $(".question").html(questions[i].correctImage);
+        $(".answer").html("Correct:"+questions[i].correctAnswer);
+        setTimeout(correct,6000);
+        questionInterval = setInterval(decrement,1000)
+    }
+    function betweenIncorrect() {
+        clearInterval(questionInterval);
+        time=5;
+        $(".timer").html(timeConverter(time));
+        $(".question").html(questions[i].incorrectImage);
+        $(".answer").html("The Correct Answer was:"+questions[i].correctAnswer);
+        setTimeout(incorrect,6000);
+        questionInterval = setInterval(decrement,1000)
+    }
     function nextQuestion() {
         if(i<(questions.length-1)){
             clearInterval(questionInterval)
