@@ -1,11 +1,11 @@
 var questions = [{
     question: "What was the teachers name?",
-    answers: {
-        a: "a",
-        b: "Mr. Pheeny",
-        c: "a",
-        d: "a",
-    },
+    answers: [
+        "a",
+        "Mr. Pheeny",
+        "a",
+        "a",
+    ],
     correctAnswer: "Mr. Pheeny",
     correctImage: "./images/questionOneCorrect.gif",
     incorrectImage: "./images/questionOneIncorrect.gif",
@@ -13,12 +13,12 @@ var questions = [{
     },
     {
     question: "What grade was Corey in in season 1?",
-    answers: {
-        a: "a",
-        b: "a",
-        c: "a",
-        d: "6th Grade",
-    },
+    answers: [
+        "a",
+        "6th Grade",
+        "a",
+        "a",
+    ],
     correctAnswer: "6th Grade",
     correctImage: "./images/questionTwoCorrect.jpg",
     incorrectImage: "./images/QuestiontwoIncorrect.jpg",
@@ -26,12 +26,12 @@ var questions = [{
     },
     {
     question: "What city did the Matthews family live in?",
-    answers: {
-        a: "a",
-        b: "a",
-        c: "Philadelphia",
-        d: "a",
-    },
+    answers: [
+        "a",
+        "a",
+        "a",
+        "Philadelphia",
+    ],
     correctAnswer: "Philadelphia",
     correctImage: "./images/questionThreeCorrect.gif",
     incorrectImage: "./images/questionThreeIncorrect.gif",
@@ -39,12 +39,12 @@ var questions = [{
     },
     {
     question: "What was Corey's dads job?",
-    answers: {
-        a: "General store manager",
-        b: "a",
-        c: "a",
-        d: "a",
-    },
+    answers: [
+        "General store manager",
+        "a",
+        "a",
+        "a",
+    ],
     correctAnswer: "General store manager",
     correctImage: "./images/questionFourCorrect.gif",
     incorrectImage: "./images/questionFourIncorrect.gif",
@@ -52,12 +52,12 @@ var questions = [{
     },
     {
     question: "Who is Corey's best friend?",
-    answers: {
-        a: "a",
-        b: "a",
-        c: "Shawn",
-        d: "a",
-    },
+    answers: [
+        "Shawn",
+        "a",
+        "a",
+        "a",
+    ],
     correctAnswer: "Shawn",
     correctImage: "./images/questionFiveCorrect.gif",
     incorrectImage: "./images/questionFiveIncorrect.gif",
@@ -65,12 +65,12 @@ var questions = [{
     },
     {
     question: "What is Corey's favorite sport",
-    answers: {
-        a: "a",
-        b: "Baseball",
-        c: "a",
-        d: "a",
-    },
+    answers: [
+        "a",
+        "a",
+        "Baseball",
+        "a",
+    ],
     correctAnswer: "Baseball",
     correctImage: "./images/questionSixCorrect.gif",
     incorrectImage: "./images/questionSixIncorrect.png",
@@ -90,24 +90,26 @@ $(document).ready(function(){
         $(".hide1").show();
         $(".hide2").hide();
         // for(i=0; i<questions.length; i++){
-            $(".question").html(questions[i].question);
-            for(j=0; j<questions[i].answers.length; j++){
-                // $(".answer").append("<div class='answers'>questions[i].answers[j]</div>")
-                // $("<div/>").html(questions[i].answers[j]).attr('class','answers').append(".answer")
-                var answerAuto = $("<div>");
-                answerAuto.addClass("answers");
-                answerAuto.html(questions[i].answers[j]);
-                $(".answer").append(answerAuto);
-            };
-            setTimeout(noAnswer,31000);
-            questionInterval = setInterval(decrement,1000);
+        $(".question").html(questions[i].question);
+        // console.log(questions[i].answers.length)
+        for(j=0; j<questions[i].answers.length; j++){
+            // console.log(questions[i].answers[j])
+            // $(".answer").append("<div class='answers'>questions[i].answers[j]</div>")
+            // $("<div/>").html(questions[i].answers[j]).attr('class','answers').append(".answer")
+            var answerAuto = $("<div>");
+            answerAuto.addClass("answers"+j);
+            answerAuto.html(questions[i].answers[j]);
+            $(".answer").append(answerAuto);
+        };
+        setTimeout(noAnswer,31000);
+        questionInterval = setInterval(decrement,1000);
             // $(".timer").html(setTimeout(function() {
             //     ;
             //     }, 30000));
 
             // };
         })
-    $(".answers").on("click", function() {
+    $(".answers0,.answers1,.answers2,.answers3").on("click", function() {
         if(this.text()==questions[i].correctAnswer){
             correct()
         }
@@ -160,10 +162,7 @@ $(document).ready(function(){
             for(j=0; j<questions[i].answers.length; j++){
                 // $(".answers").html("<div>'questions[i].answers'</div>")
                 // $("<div/>").html(questions[i].answers[j]).attr('class','answers').append(".answer")
-                var answerAuto = $("<div>");
-                answerAuto.addClass("answers");
-                answerAuto.html(questions[i].answers[j]);
-                $(".answer").append(answerAuto);
+                $(".answers"+j).html(questions[i].answers[j]);
 
             };
             setTimeout(noAnswer,31000);
