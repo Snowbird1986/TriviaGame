@@ -7,8 +7,8 @@ var questions = [{
         "a",
     ],
     correctAnswer: "Mr. Pheeny",
-    correctImage: "./images/questionOneCorrect.gif",
-    incorrectImage: "./images/questionOneIncorrect.gif",
+    correctImage: "assets/images/questionOneCorrect.gif",
+    incorrectImage: "assets/images/questionOneIncorrect.gif",
     time:30
     },
     {
@@ -20,8 +20,8 @@ var questions = [{
         "a",
     ],
     correctAnswer: "6th Grade",
-    correctImage: "./images/questionTwoCorrect.jpg",
-    incorrectImage: "./images/QuestiontwoIncorrect.jpg",
+    correctImage: "assets/images/questionTwoCorrect.jpg",
+    incorrectImage: "assets/images/QuestiontwoIncorrect.jpg",
     time:30
     },
     {
@@ -33,8 +33,8 @@ var questions = [{
         "Philadelphia",
     ],
     correctAnswer: "Philadelphia",
-    correctImage: "./images/questionThreeCorrect.gif",
-    incorrectImage: "./images/questionThreeIncorrect.gif",
+    correctImage: "assets/images/questionThreeCorrect.gif",
+    incorrectImage: "assets/images/questionThreeIncorrect.gif",
     time:30
     },
     {
@@ -46,8 +46,8 @@ var questions = [{
         "a",
     ],
     correctAnswer: "General store manager",
-    correctImage: "./images/questionFourCorrect.gif",
-    incorrectImage: "./images/questionFourIncorrect.gif",
+    correctImage: "assets/images/questionFourCorrect.gif",
+    incorrectImage: "assets/images/questionFourIncorrect.gif",
     time:30 
     },
     {
@@ -59,8 +59,8 @@ var questions = [{
         "a",
     ],
     correctAnswer: "Shawn",
-    correctImage: "./images/questionFiveCorrect.gif",
-    incorrectImage: "./images/questionFiveIncorrect.gif",
+    correctImage: "assets/images/questionFiveCorrect.gif",
+    incorrectImage: "assets/images/questionFiveIncorrect.gif",
     time:30 
     },
     {
@@ -72,8 +72,8 @@ var questions = [{
         "a",
     ],
     correctAnswer: "Baseball",
-    correctImage: "./images/questionSixCorrect.gif",
-    incorrectImage: "./images/questionSixIncorrect.png",
+    correctImage: "assets/images/questionSixCorrect.gif",
+    incorrectImage: "assets/images/questionSixIncorrect.png",
     time:30  
     }]
     
@@ -109,21 +109,22 @@ $(document).ready(function(){
 
             // };
         })
-    $(".answers0,.answers1,.answers2,.answers3").on("click", function() {
-        if(this.text()==questions[i].correctAnswer){
-            correct()
+    $(".answer").on('click', ".answers0,.answers1,.answers2,.answers3", function() {
+        console.log($(this).text())
+        if($(this).text()==questions[i].correctAnswer){
+            correct1()
         }
         else {
-            incorrect()
+            incorrect1()
         }
     });
     
-    function correct (){
+    function correct1(){
         correct++;
         betweenCorrect();
         console.log(correct)
     }
-    function incorrect (){
+    function incorrect1(){
         incorrect++;
         betweenIncorrect();
         console.log(incorrect)
@@ -138,18 +139,18 @@ $(document).ready(function(){
         clearInterval(questionInterval);
         time=5;
         $(".timer").html(timeConverter(time));
-        $(".question").html(questions[i].correctImage);
-        $(".answer").html("Correct:"+questions[i].correctAnswer);
-        setTimeout(nextQuestion,6000);
+        $(".question").html("<img src="+questions[i].correctImage+">");
+        $(".answer").html("Correct: "+questions[i].correctAnswer);
+        setTimeout(nextQuestion2,6000);
         questionInterval = setInterval(decrement,1000)
     }
     function betweenIncorrect() {
         clearInterval(questionInterval);
         time=5;
         $(".timer").html(timeConverter(time));
-        $(".question").html(questions[i].incorrectImage);
-        $(".answer").html("The Correct Answer was:"+questions[i].correctAnswer);
-        setTimeout(nextQuestion,6000);
+        $(".question").html("<img src="+questions[i].incorrectImage+">");
+        $(".answer").html("The Correct Answer was: "+questions[i].correctAnswer);
+        setTimeout(nextQuestion2,6000);
         questionInterval = setInterval(decrement,1000)
     }
     function nextQuestion() {
@@ -163,6 +164,32 @@ $(document).ready(function(){
                 // $(".answers").html("<div>'questions[i].answers'</div>")
                 // $("<div/>").html(questions[i].answers[j]).attr('class','answers').append(".answer")
                 $(".answers"+j).html(questions[i].answers[j]);
+
+            };
+            setTimeout(noAnswer,31000);
+            questionInterval = setInterval(decrement,1000);
+        }
+        else{
+            clearInterval(questionInterval)
+            quizReults()
+        }
+
+    }
+    function nextQuestion2() {
+        $(".answer").html("Answers:")
+        if(i<(questions.length-1)){
+            clearInterval(questionInterval)
+            time = 30
+            $(".timer").html(timeConverter(time));
+            i++;
+            $(".question").html(questions[i].question);
+            for(j=0; j<questions[i].answers.length; j++){
+                // $(".answers").html("<div>'questions[i].answers'</div>")
+                // $("<div/>").html(questions[i].answers[j]).attr('class','answers').append(".answer")
+                var answerAuto = $("<div>");
+                answerAuto.addClass("answers"+j);
+                answerAuto.html(questions[i].answers[j]);
+                $(".answer").append(answerAuto);
 
             };
             setTimeout(noAnswer,31000);
