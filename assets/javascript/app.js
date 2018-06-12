@@ -76,6 +76,8 @@ var questions = [{
     incorrectImage: "assets/images/questionSixIncorrect.png",
     time:30  
     }]
+var questionInterval = null
+var questionTimeout = null
     
 
 $(document).ready(function(){
@@ -101,7 +103,7 @@ $(document).ready(function(){
             answerAuto.html(questions[i].answers[j]);
             $(".answer").append(answerAuto);
         };
-        setTimeout(noAnswer,31000);
+        questionTimeout = setTimeout(noAnswer,31000);
         questionInterval = setInterval(decrement,1000);
             // $(".timer").html(setTimeout(function() {
             //     ;
@@ -136,26 +138,29 @@ $(document).ready(function(){
     }
 
     function betweenCorrect() {
+        clearTimeout(questionTimeout);
         clearInterval(questionInterval);
         time=5;
         $(".timer").html(timeConverter(time));
         $(".question").html("<img src="+questions[i].correctImage+">");
         $(".answer").html("Correct: "+questions[i].correctAnswer);
-        setTimeout(nextQuestion2,6000);
+        questionTimeout = setTimeout(nextQuestion2,6000);
         questionInterval = setInterval(decrement,1000)
     }
     function betweenIncorrect() {
+        clearTimeout(questionTimeout);
         clearInterval(questionInterval);
         time=5;
         $(".timer").html(timeConverter(time));
         $(".question").html("<img src="+questions[i].incorrectImage+">");
         $(".answer").html("The Correct Answer was: "+questions[i].correctAnswer);
-        setTimeout(nextQuestion2,6000);
+        questionTimeout = setTimeout(nextQuestion2,6000);
         questionInterval = setInterval(decrement,1000)
     }
     function nextQuestion() {
         if(i<(questions.length-1)){
-            clearInterval(questionInterval)
+            clearTimeout(questionTimeout);
+            clearInterval(questionInterval);
             time = 30
             $(".timer").html(timeConverter(time));
             i++;
@@ -166,11 +171,12 @@ $(document).ready(function(){
                 $(".answers"+j).html(questions[i].answers[j]);
 
             };
-            setTimeout(noAnswer,31000);
+            questionTimeout = setTimeout(noAnswer,31000);
             questionInterval = setInterval(decrement,1000);
         }
         else{
-            clearInterval(questionInterval)
+            clearTimeout(questionTimeout);
+            clearInterval(questionInterval);
             quizReults()
         }
 
@@ -178,6 +184,7 @@ $(document).ready(function(){
     function nextQuestion2() {
         $(".answer").html("Answers:")
         if(i<(questions.length-1)){
+            clearTimeout(questionTimeout);
             clearInterval(questionInterval)
             time = 30
             $(".timer").html(timeConverter(time));
@@ -192,11 +199,12 @@ $(document).ready(function(){
                 $(".answer").append(answerAuto);
 
             };
-            setTimeout(noAnswer,31000);
+            questionTimeout = setTimeout(noAnswer,31000);
             questionInterval = setInterval(decrement,1000);
         }
         else{
-            clearInterval(questionInterval)
+            clearTimeout(questionTimeout);
+            clearInterval(questionInterval);
             quizReults()
         }
 
