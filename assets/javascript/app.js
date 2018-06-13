@@ -1,10 +1,10 @@
 var questions = [{
     question: "What was the teachers name?",
     answers: [
-        "a",
+        "Mr. Smith",
         "Mr. Pheeny",
-        "a",
-        "a",
+        "Mr. Adams",
+        "Mrs. Staley",
     ],
     correctAnswer: "Mr. Pheeny",
     correctImage: "assets/images/questionOneCorrect.gif",
@@ -14,10 +14,10 @@ var questions = [{
     {
     question: "What grade was Corey in in season 1?",
     answers: [
-        "a",
+        "7th Grade",
         "6th Grade",
-        "a",
-        "a",
+        "4th Grade",
+        "5th Grade",
     ],
     correctAnswer: "6th Grade",
     correctImage: "assets/images/questionTwoCorrect.jpg",
@@ -27,9 +27,9 @@ var questions = [{
     {
     question: "What city did the Matthews family live in?",
     answers: [
-        "a",
-        "a",
-        "a",
+        "San Fransisco",
+        "New York City",
+        "Washington D.C.",
         "Philadelphia",
     ],
     correctAnswer: "Philadelphia",
@@ -41,9 +41,9 @@ var questions = [{
     question: "What was Corey's dads job?",
     answers: [
         "General store manager",
-        "a",
-        "a",
-        "a",
+        "Mechanic",
+        "Accountant",
+        "Business Executive",
     ],
     correctAnswer: "General store manager",
     correctImage: "assets/images/questionFourCorrect.gif",
@@ -54,9 +54,9 @@ var questions = [{
     question: "Who is Corey's best friend?",
     answers: [
         "Shawn",
-        "a",
-        "a",
-        "a",
+        "Brad",
+        "Eric",
+        "Alphonso",
     ],
     correctAnswer: "Shawn",
     correctImage: "assets/images/questionFiveCorrect.gif",
@@ -66,10 +66,10 @@ var questions = [{
     {
     question: "What is Corey's favorite sport",
     answers: [
-        "a",
-        "a",
+        "Football",
+        "Basketball",
         "Baseball",
-        "a",
+        "Tennis",
     ],
     correctAnswer: "Baseball",
     correctImage: "assets/images/questionSixCorrect.gif",
